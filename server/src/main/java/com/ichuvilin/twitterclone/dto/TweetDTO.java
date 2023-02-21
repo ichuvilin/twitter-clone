@@ -6,7 +6,7 @@ public class TweetDTO {
 
     private String text;
 
-    private User user;
+    private Long userId;
 
     public String getText() {
         return text;
@@ -16,11 +16,19 @@ public class TweetDTO {
         this.text = text;
     }
 
-    public User getUser() {
-        return user;
+    public Long getUserId() {
+        return userId;
     }
 
-    public void setUser(User user) {
-        this.user = user;
+    public void setUser(Long user) {
+        this.userId = user;
+    }
+
+    @Override
+    public String toString() {
+        return "TweetDTO{" +
+                "text='" + text + '\'' +
+                ", userId=" + userId +
+                '}';
     }
 }

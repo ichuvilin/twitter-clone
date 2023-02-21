@@ -1,5 +1,7 @@
 package com.ichuvilin.twitterclone.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -26,9 +28,6 @@ public class User {
 
     @Column(name = "password")
     private String password;
-
-    @OneToMany(mappedBy = "user")
-    private List<Tweet> tweets;
 
     public User() {
     }
@@ -79,13 +78,5 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
-    }
-
-    public List<Tweet> getTwits() {
-        return tweets;
-    }
-
-    public void setTwits(List<Tweet> tweets) {
-        this.tweets = tweets;
     }
 }
