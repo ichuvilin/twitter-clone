@@ -17,7 +17,7 @@ const NavBar = observer(() => {
                     {
                         user.isAuth ?
                             <Navbar.Text>
-                                Signed in as: <a href={"/profile/" + user.data.id}> {user.data.first_name} {user.data.last_name} </a>
+                                Signed in as: <a href={"/profile/" + user.user.id}> {user.user.first_name} {user.user.last_name} </a>
                             </Navbar.Text>
                             :
                             <Button href={"/login"}>Login</Button>

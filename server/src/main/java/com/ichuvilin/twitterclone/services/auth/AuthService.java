@@ -28,7 +28,9 @@ public class AuthService {
 
     private final AuthenticationManager authManager;
 
-    public AuthService(ModelMapper modelMapper, JwtUtil jwtUtil, UserRepository userRepository, PasswordEncoder passwordEncoder, AuthenticationManager authManager) {
+    public AuthService(ModelMapper modelMapper,
+                       JwtUtil jwtUtil, UserRepository userRepository,
+                       PasswordEncoder passwordEncoder, AuthenticationManager authManager) {
         this.modelMapper = modelMapper;
         this.jwtUtil = jwtUtil;
         this.userRepository = userRepository;
@@ -70,4 +72,15 @@ public class AuthService {
         return modelMapper.map(dto, User.class);
     }
 
+    public Map<String, String> checkUser(String token) {
+        String username = jwtUtil.validateTokenAndRetrieveClaim(token);
+        if (!username.isBlank() && !username.isEmpty()) {
+            User user = userRepository.findByUsername(username).orElse(null);
+            if (user != null) {
+                String authToken = jwtUtil.generateToken(user);
+                return Map.of("token", authToken);
+            }
+        }
+        return Map.of("message", "Invalid Jwt Token");
+    }
 }

@@ -1,14 +1,16 @@
+import {makeAutoObservable} from "mobx";
+
 export default class TweetStore {
     constructor() {
-        this._tweets = {};
+        this._tweets = [];
+        makeAutoObservable(this)
     }
-
 
     get tweets() {
         return this._tweets;
     }
 
-    set tweets(value) {
+    setTweets(value) {
         this._tweets = value;
     }
 }

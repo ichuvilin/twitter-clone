@@ -1,4 +1,4 @@
-import {$host} from "../http";
+import {$authHost, $host} from "../http";
 
 
 const getAllTweets = async () => {
@@ -6,7 +6,12 @@ const getAllTweets = async () => {
     return data;
 }
 
+const createNewTweet = async (text, userId) => {
+    console.log(text)
+    await $authHost.post("/tweets/create", {text, userId})
+}
 
 export {
-    getAllTweets
+    getAllTweets,
+    createNewTweet
 }
