@@ -1,4 +1,4 @@
-package com.ichuvilin.twitterclone.config;
+package com.ichuvilin.twitterclone.middleware;
 
 import com.auth0.jwt.exceptions.JWTVerificationException;
 import com.ichuvilin.twitterclone.security.JwtUtil;

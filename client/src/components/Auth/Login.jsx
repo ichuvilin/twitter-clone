@@ -21,7 +21,7 @@ const Login = () => {
             <input placeholder={"username"} value={username} onChange={e => setUsername(e.target.value)}/>
             <input placeholder={"password"} value={password} onChange={e => setPassword(e.target.value)} />
             <button onClick={fetchUser} >Login</button>
-            <button onClick={() => console.log(user)}>Check user state</button>
+            <button onClick={() => console.log(localStorage.getItem("token"))} >Login</button>
         </div>
     );
 };
