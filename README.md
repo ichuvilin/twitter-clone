@@ -22,10 +22,15 @@ A simple twitter clone that can create new posts and register/authorize a user w
 
 Main page
 
-![main page](C:\projects\twitter-clone\img\main-page.png)
+![main page](https://github.com/ichuvilin/twitter-clone/blob/main/img/main-page.png)
 
 Login and register page
 
-![login page](C:\projects\twitter-clone\img\login-page.png)
+![login page](https://github.com/ichuvilin/twitter-clone/blob/main/img/login-page.png)
 
-![register page](C:\projects\twitter-clone\img\registration-page.png)
+![register page](https://github.com/ichuvilin/twitter-clone/blob/main/img/registration-page.png)
+
+User profile pages
+
+![user 1](https://github.com/ichuvilin/twitter-clone/blob/main/img/user-page-1.png)
+![user 2](https://github.com/ichuvilin/twitter-clone/blob/main/img/user-page-2.png)
