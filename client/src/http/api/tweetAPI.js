@@ -7,11 +7,17 @@ const getAllTweets = async () => {
 }
 
 const createNewTweet = async (text, userId) => {
-    console.log(text)
     await $authHost.post("/tweets/create", {text, userId})
+}
+
+
+const getAllTweetsByUser = async (id) => {
+    const {data} = await $host.get(`/tweets/${id}`);
+    return data;
 }
 
 export {
     getAllTweets,
-    createNewTweet
+    createNewTweet,
+    getAllTweetsByUser
 }

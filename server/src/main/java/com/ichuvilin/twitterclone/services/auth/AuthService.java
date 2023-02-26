@@ -2,6 +2,7 @@ package com.ichuvilin.twitterclone.services.auth;
 
 import com.ichuvilin.twitterclone.dto.UserDTO;
 import com.ichuvilin.twitterclone.dto.security.AuthenticationDTO;
+import com.ichuvilin.twitterclone.dto.security.RegistrationDTO;
 import com.ichuvilin.twitterclone.models.User;
 import com.ichuvilin.twitterclone.respository.UserRepository;
 import com.ichuvilin.twitterclone.security.JwtUtil;
@@ -39,7 +40,7 @@ public class AuthService {
     }
 
     @Transactional
-    public Map<String, String> registration(UserDTO dto) {
+    public Map<String, String> registration(RegistrationDTO dto) {
 
         User user = convertToUser(dto);
         user.setPassword(passwordEncoder.encode(user.getPassword()));
@@ -68,19 +69,7 @@ public class AuthService {
         return Map.of("token", token);
     }
 
-    private User convertToUser(UserDTO dto) {
+    private User convertToUser(RegistrationDTO dto) {
         return modelMapper.map(dto, User.class);
-    }
-
-    public Map<String, String> checkUser(String token) {
-        String username = jwtUtil.validateTokenAndRetrieveClaim(token);
-        if (!username.isBlank() && !username.isEmpty()) {
-            User user = userRepository.findByUsername(username).orElse(null);
-            if (user != null) {
-                String authToken = jwtUtil.generateToken(user);
-                return Map.of("token", authToken);
-            }
-        }
-        return Map.of("message", "Invalid Jwt Token");
     }
 }

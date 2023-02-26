@@ -15,8 +15,8 @@ const Registration = () => {
 
     const fetchUser = async () => {
         const data = await registration(firstName, lastName, username, email, password);
-        user.isAuth = true;
-        user.data = jwtDecode(data.token)
+        user.setIsAuth(true);
+        user.setUser(jwtDecode(data.token))
     }
 
     return (
@@ -27,7 +27,6 @@ const Registration = () => {
             <input placeholder={"username"} value={username} onChange={e => setUsername(e.target.value)}/>
             <input placeholder={"password"} value={password} onChange={e => setPassword(e.target.value)}/>
             <button onClick={fetchUser}>Login</button>
-            <button onClick={() => console.log(user)}>Check user state</button>
         </div>
     );
 };
