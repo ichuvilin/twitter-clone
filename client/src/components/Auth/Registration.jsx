@@ -2,6 +2,7 @@ import React, {useContext, useState} from 'react';
 import {Context} from "../../index";
 import {login, registration} from "../../http/api/userAPI";
 import jwtDecode from "jwt-decode";
+import {Button, Container, Form} from "react-bootstrap";
 
 const Registration = () => {
 
@@ -20,15 +21,43 @@ const Registration = () => {
     }
 
     return (
-        <div>
-            <input placeholder={"firstName"} value={firstName} onChange={e => setFirstName(e.target.value)}/>
-            <input placeholder={"lastName"} value={lastName} onChange={e => setLastName(e.target.value)}/>
-            <input placeholder={"email"} value={email} onChange={e => setEmail(e.target.value)}/>
-            <input placeholder={"username"} value={username} onChange={e => setUsername(e.target.value)}/>
-            <input placeholder={"password"} value={password} onChange={e => setPassword(e.target.value)}/>
-            <button onClick={fetchUser}>Login</button>
-        </div>
-    );
+        <Container>
+            <Form style={{marginTop: 50}}>
+                <Form.Group className="mb-3" controlId="formBasicEmail">
+                    <Form.Label>First name</Form.Label>
+                    <Form.Control type="text" value={firstName} onChange={e => setFirstName(e.target.value)}
+                                  placeholder="Enter first name"/>
+                </Form.Group>
+                <Form.Group className="mb-3" controlId="formBasicEmail">
+                    <Form.Label>Last name</Form.Label>
+                    <Form.Control type="text" value={lastName} onChange={e => setLastName(e.target.value)}
+                                  placeholder="Enter last name"/>
+                </Form.Group>
+                <Form.Group className="mb-3" controlId="formBasicEmail">
+                    <Form.Label>Email</Form.Label>
+                    <Form.Control type="text" value={email} onChange={e => setEmail(e.target.value)}
+                                  placeholder="Enter email"/>
+                </Form.Group>
+                <Form.Group className="mb-3" controlId="formBasicEmail">
+                    <Form.Label>Username</Form.Label>
+                    <Form.Control type="text" value={username} onChange={e => setUsername(e.target.value)}
+                                  placeholder="Enter username"/>
+                </Form.Group>
+
+                <Form.Group className="mb-3" controlId="formBasicPassword">
+                    <Form.Label>Password</Form.Label>
+                    <Form.Control type="password" value={password} onChange={e => setPassword(e.target.value)}
+                                  placeholder="Password"/>
+                </Form.Group>
+                <Button variant="primary" onClick={fetchUser} type="submit">
+                    Submit
+                </Button>
+                <br/>
+                <a href={"/login"} >If you have an account.</a>
+            </Form>
+        </Container>
+
+    )
 };
 
 export default Registration;

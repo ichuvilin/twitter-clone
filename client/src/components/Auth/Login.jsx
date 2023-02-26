@@ -34,6 +34,8 @@ const Login = () => {
                 <Button variant="primary" onClick={fetchUser} type="submit">
                     Submit
                 </Button>
+                <br/>
+                <a style={{marginTop: "10"}} href="/registration"> If you don't have an account.</a>
             </Form>
         </Container>
 
