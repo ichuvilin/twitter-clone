@@ -3,6 +3,7 @@ import {Context} from "../../index";
 import {Card, Container} from 'react-bootstrap';
 import {observer} from "mobx-react-lite";
 import TweetCreate from "./TweetCreate";
+import TweetsItems from "./TweetsItems";
 
 const Tweets = observer(() => {
 
@@ -14,18 +15,7 @@ const Tweets = observer(() => {
                 user.isAuth && <TweetCreate />
             }
             {
-                tweets.tweets.map(({id, text, user}) =>
-                    <Card key={"id__" + id} style={{width: '100%', margin: '20px auto'}}>
-                        <Card.Body>
-                            <Card.Title> <a href={"/profile/" + user.id}>
-                                {user.firstName} {user.lastName}
-                            </a> </Card.Title>
-                            <Card.Text>
-                                {text}
-                            </Card.Text>
-                        </Card.Body>
-                    </Card>
-                )
+                tweets.tweets.map(e => <TweetsItems key={e.id} item={e}/>)
             }
         </Container>
     );

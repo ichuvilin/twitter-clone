@@ -12,18 +12,13 @@ const registration = async (firstName, lastName, username, email, password) => {
     return data;
 }
 
-const check = async () => {
-    let token = localStorage.getItem("token");
-    if (token !== null) {
-        const {data} = await $authHost.post("/auth/user", {token});
-        localStorage.setItem('token', data.token)
-        return data;
-    }
-    return null;
+const userProfile = async (id) => {
+    const {data} = await $host.get(`/user/${id}`)
+    return data;
 }
 
 export {
     login,
     registration,
-    check
+    userProfile
 }

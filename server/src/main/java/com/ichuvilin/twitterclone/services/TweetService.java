@@ -51,4 +51,9 @@ public class TweetService {
 
     public void deleteTweet(Long id) {
     }
+
+    public List<Tweet> getAllTweetsByUser(Long id) {
+        List<Tweet> tweetsByUser = tweetRepository.findAll().stream().filter(e -> e.getUser().getId() == id).toList();
+        return tweetsByUser;
+    }
 }

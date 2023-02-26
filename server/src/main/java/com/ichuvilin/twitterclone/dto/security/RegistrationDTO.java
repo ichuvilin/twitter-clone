@@ -1,7 +1,6 @@
-package com.ichuvilin.twitterclone.dto;
+package com.ichuvilin.twitterclone.dto.security;
 
-public class UserDTO {
-
+public class RegistrationDTO {
     private String firstName;
 
     private String lastName;
@@ -9,6 +8,8 @@ public class UserDTO {
     private String username;
 
     private String email;
+
+    private String password;
 
     public String getFirstName() {
         return firstName;
@@ -40,5 +41,13 @@ public class UserDTO {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 }

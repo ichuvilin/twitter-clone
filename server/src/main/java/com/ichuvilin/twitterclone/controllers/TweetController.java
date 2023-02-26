@@ -3,6 +3,8 @@ package com.ichuvilin.twitterclone.controllers;
 import com.ichuvilin.twitterclone.dto.TweetDTO;
 import com.ichuvilin.twitterclone.models.Tweet;
 import com.ichuvilin.twitterclone.services.TweetService;
+import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PostAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -20,6 +22,11 @@ public class TweetController {
     @GetMapping("")
     public List<Tweet> getAllTweets() {
         return tweetService.getAllTweets();
+    }
+
+    @GetMapping("/{id}")
+    public List<Tweet> getAllTweetsByUser(@PathVariable Long id) {
+        return tweetService.getAllTweetsByUser(id);
     }
 
     @PostMapping("/create")
