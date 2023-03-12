@@ -21,7 +21,6 @@ public class UserService {
 
     public UserDTO getOneUser(Long id) {
         Optional<User> candidate = userRepository.findById(id);
-
         return candidate.map(this::convertToDTO).orElse(null);
     }
 

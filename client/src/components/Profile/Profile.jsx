@@ -1,5 +1,5 @@
 import React, {useContext, useEffect, useState} from 'react';
-import {userProfile} from "../../http/api/userAPI";
+import {getUserById} from "../../http/api/userAPI";
 import {useParams} from "react-router-dom";
 import {Card, Col, Container, Row} from "react-bootstrap";
 import {Context} from "../../index";
@@ -14,7 +14,7 @@ const Profile = () => {
 
 
     const fetchUser = async () => {
-        const data = await userProfile(params.id);
+        const data = await getUserById(params.id);
         return data;
     }
 

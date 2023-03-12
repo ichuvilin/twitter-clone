@@ -1,12 +1,8 @@
-import React, {useContext, useState} from 'react';
-import {Context} from "../../index";
-import {login, registration} from "../../http/api/userAPI";
-import jwtDecode from "jwt-decode";
+import React, {useState} from 'react';
+import {registration} from "../../http/api/userAPI";
 import {Button, Container, Form} from "react-bootstrap";
 
 const Registration = () => {
-
-    const {user} = useContext(Context)
 
     const [firstName, setFirstName] = useState("");
     const [lastName, setLastName] = useState("");
@@ -15,9 +11,7 @@ const Registration = () => {
     const [password, setPassword] = useState("");
 
     const fetchUser = async () => {
-        const data = await registration(firstName, lastName, username, email, password);
-        user.setIsAuth(true);
-        user.setUser(jwtDecode(data.token))
+        await registration(firstName, lastName, username, email, password);
     }
 
     return (
@@ -53,7 +47,7 @@ const Registration = () => {
                     Submit
                 </Button>
                 <br/>
-                <a href={"/login"} >If you have an account.</a>
+                <a href={"/login"}>If you have an account.</a>
             </Form>
         </Container>
 

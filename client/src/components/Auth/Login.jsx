@@ -1,7 +1,6 @@
 import React, {useContext, useState} from 'react';
 import {Context} from "../../index";
 import {login} from "../../http/api/userAPI";
-import jwtDecode from "jwt-decode";
 import {Button, Container, Form} from 'react-bootstrap';
 
 const Login = () => {
@@ -11,10 +10,11 @@ const Login = () => {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
 
-    const fetchUser = async () => {
+    const fetchUser = async (e) => {
+        e.preventDefault()
         const data = await login(username, password);
         user.setIsAuth(true);
-        user.setUser(jwtDecode(data.token))
+        user.setUser(data.body)
     }
 
     return (
