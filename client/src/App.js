@@ -5,7 +5,6 @@ import {getAllTweets} from "./http/api/tweetAPI";
 import {observer} from "mobx-react-lite";
 import NavBar from "./components/Navigate/NavBar";
 import AppRouter from "./components/AppRouter";
-import jwtDecode from "jwt-decode";
 
 const App = observer(() => {
 
@@ -13,10 +12,10 @@ const App = observer(() => {
     const {user, tweets} = useContext(Context)
 
     useEffect(() => {
-        let token = localStorage.getItem("token");
-        if (token) {
+        let userLocalData = JSON.parse(localStorage.getItem("user"));
+        if (userLocalData) {
             user.setIsAuth(true);
-            user.setUser(jwtDecode(token));
+            user.setUser(userLocalData);
         }
         getAllTweets().then(data => tweets.setTweets(data))
     })
